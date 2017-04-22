@@ -20,7 +20,7 @@ class PostTableSeeder extends Seeder
             'method' => '1.- Precalentar el horno a 180°C, En una ollita a fuego bajo, funde la mantequilla y cocina el ajo por 1 minuto hasta que suelte su aroma.' .
                         '2.- Barniza la base da cada hongo con esta mezcla y reserva. Rellena los hongos con el queso y los jitomates. Agrega un poco de aceite de oliva, sal y pimienta a cada hongo y hornea por 15 minutos o hasta que estén suaves y los jitomates rostizados.' .
                         '3.- Saca los portobellos del horno y barniza con la reducción de balsámico, decora con albahaca.',
-            'category' => 'Guarniciones',
+            'category_id' => '1',
             'user_id' => '1',
         ]);
         $post->save();
@@ -32,7 +32,7 @@ class PostTableSeeder extends Seeder
             'method' => '1.- En un bowl, mezcla el yoghurt natural Oikos® con la miel de abeja y las nueces.' .
                         '2.- Coloca un poco de yoghurt, seguido de piña y kiwi y cubre con más yoghurt.' .
                         '3.- Termina con más fruta y decora con mitades de nueces.',
-            'category' => 'Postres',
+            'category_id' => '2',
             'user_id' => '2',
         ]);
         $post->save();
@@ -45,7 +45,7 @@ class PostTableSeeder extends Seeder
                         '2.- Licúa el queso, la leche, la vainilla y el azúcar glass hasta obtener una mezcla tersa.' .
                         '3.- Colócalos en un vasito o recipiente de vidrio y baña con la salsa de queso.' .
                         '4.- Incorpora el durazno, la piña, la nuez y mezcla.',
-            'category' => 'Postres',
+            'category_id' => '2',
             'user_id' => '1',
         ]);
         $post->save();

@@ -11,6 +11,38 @@
 |
 */
 
+use App\Post;
+use App\User;
+use App\Category;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test', function () {
+
+    $users = User::all();
+
+    foreach ($users as $user) {
+        // Seguidos y seguidores
+        $user->following = $user->following()->get();
+        $user->followers = $user->followers()->get();
+
+        // Obtenemos todas las publicaciones de un usuario
+        $posts = $user->posts()->get();
+
+        // Agregamos las categorias como nombre y no como objeto
+        $posts->each(function ($post) {
+            $category = $post->category()->get()->first();
+            $post->category = $category->name;
+            $post->comments = $post->comments()->get();
+        });
+
+        // Una vez que modificamos las categorias de las publicaciones
+        // actualizamos las publicaciones
+        $user->posts = $posts;
+    }
+    
+    return response()
+            ->json( $users );
 });

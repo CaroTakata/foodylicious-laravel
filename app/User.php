@@ -9,26 +9,36 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'gender', 'avatar',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    public function following()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'follow_id');
+    }
+    
+    public function followers()
+    {
+        return $this->belongsToMany('App\User', 'followers', 'follow_id', 'user_id');
+    }
+
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Like', 'likes');
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany('App\Post', 'comments');
     }
 }

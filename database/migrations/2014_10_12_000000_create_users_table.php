@@ -15,11 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::defaultStringLength(191);
         Schema::create('users', function (Blueprint $table) {
+            //Primary key
             $table->increments('id');
+
+            //Columns
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->rememberToken();
+            $table->integer('gender')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
