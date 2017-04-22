@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Prueba para confirmar que traiga bien todo de la Base de Datos
 Route::get('/test', function () {
 
     $users = User::all();
